@@ -9,11 +9,8 @@ const rl = createInterface({
 export function startREPL() {
   rl.prompt();
   rl.on("line", (input) => {
-    const userInput = cleanInput(input);
-    if (userInput.length === 0) {
-      rl.prompt();
-    } else {
-      console.log(`Your command was: ${userInput[0]}`);
+    const [command] = cleanInput(input);
+    if (!command) {
       rl.prompt();
     }
   });
